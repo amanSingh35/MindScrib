@@ -25,18 +25,21 @@ const Navbar = ({ onSearchNote, userInfo, handleClearSearch }) => {
   };
 
   return (
-    <div className="bg-white flex flex-col md:flex-row items-center justify-between px-4 py-2 drop-shadow-md">
-      <h2 className="text-xl font-medium text-black">MindScrib</h2>
-      <div className="flex-grow mt-2 md:mt-0 flex justify-center">
-        <SearchBar
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          handleSearch={handleSearch}
-          onClearSearch={onClearSearch}
-        />
-      </div>
-      <ProfileInfo userInfo={userInfo} onLogout={onLogout} />
-    </div>
+    <div className="bg-white flex flex-wrap items-center justify-between px-4 py-2 drop-shadow-md">
+  <h2 className="text-xl font-medium text-black flex-shrink-0">Note</h2>
+  <div className="flex-grow mx-4">
+    <SearchBar
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
+      handleSearch={handleSearch}
+      onClearSearch={onClearSearch}
+    />
+  </div>
+  <div className="flex-shrink-0">
+    <ProfileInfo userInfo={userInfo} onLogout={onLogout} />
+  </div>
+</div>
+
   );
 };
 

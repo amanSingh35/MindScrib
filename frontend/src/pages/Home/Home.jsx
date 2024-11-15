@@ -40,10 +40,11 @@ const Home = () => {
   };
 
   const deleteNote = async (data) => {
-    const noteId = data._id;
+   // console.log("Delete Note Data:", data); 
+    const noteId = data.id;
 
     try {
-      const response = await axiosInstance.delete("/delete-note/" + noteId);
+      const response = await axiosInstance.delete("/delete-note/" + noteId);//this slash / should be there
       if (response.data && !response.data.error) {
         showToastMessage("Note Deleted Successfully", "delete");
         getAllNotes();
@@ -73,8 +74,8 @@ const Home = () => {
     try {
       const response = await axiosInstance.get("/get-user");
 
-      if (response.data && response.data.user) {
-        setUserInfo(response.data.user);
+      if (response.data) {
+        setUserInfo(response.data);
       }
     } catch (error) {
       if (error.response.status === 401) {
@@ -89,8 +90,8 @@ const Home = () => {
     try {
       const response = await axiosInstance.get("/get-all-notes");
 
-      if (response.data && response.data.notes) {
-        setAllNotes(response.data.notes);
+      if (response.data){
+        setAllNotes(response.data);
       }
     } catch (error) {
       console.log("An expected error occured. Please try again.");
@@ -119,7 +120,7 @@ const Home = () => {
   }
 
   const updateIsPinned = async (noteData)=>{
-    const noteId=noteData._id;
+    const noteId=noteData.id;
 
     try {
       const response=await axiosInstance.put("/edit-isPinned/"+noteId,{
