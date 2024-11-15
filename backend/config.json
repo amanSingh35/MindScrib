@@ -1,3 +1,9 @@
 {
-  "connectionString": "mongodb+srv://notesapp:notesapp123@cluster0.mw35s.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  "development": {
+    "username": "notes",
+    "password": "notes123",
+    "database": "notes",
+    "host": "database-1.cr4gi6maal0w.ap-south-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  }
 }
