@@ -9,7 +9,14 @@ const User = require("./models/user.model");
 const Note = require("./models/note.model");
 
 const app = express();
-app.use(cors());
+// CORS Configuration for a Specific Origin
+const corsOptions = {
+  origin: 'https://mynotessql.netlify.app',  // Only allow this domain
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Define allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Define allowed headers
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Sync Sequelize models with the database
