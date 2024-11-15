@@ -28,6 +28,10 @@ sequelize.sync({ force: false })
     console.error("Error syncing database:", error);
   });
 
+  app.get('/', (req, res) => {
+    res.send('Hello, from Notes Server!');
+  });
+
 // Route: Create Account
 app.post("/create-account", async (req, res) => {
   try {
